@@ -1,17 +1,19 @@
 name: API CI
-#on: [ push]
+
+#on: [push]
 on:
   push:
     paths:
       - "./api/**"
       - ".github/workflows/api-ci.yml"
+
+
 defaults:
   run:
     working-directory: ./api
 
 jobs:
-
-  lint:
+  linter:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -25,10 +27,9 @@ jobs:
       - name: install
         shell: bash
         run: npm ci
-      - name: run unit test
+      - name: run linter
         shell: bash
         run: npm run lint
-
   unit-test:
     runs-on: ubuntu-latest
     steps:
@@ -46,7 +47,6 @@ jobs:
       - name: run unit test
         shell: bash
         run: npm run test
-
   e2e:
     runs-on: ubuntu-latest
     container:
@@ -67,9 +67,9 @@ jobs:
       - name: install
         shell: bash
         run: npm ci
-      - name: run unit test
+      - name: run e2e
         shell: bash
         run: npm run test:e2e
         env:
-          MONGO_URL: demo
-          MONGO_DB_NAME: mongodb://test:test123@mongo-e2e:27017?retryWrites=true&writeConcern=majority
+          MONGO_DB_NAME: demo
+          MONGO_URL: mongodb://test:test123@mongo-e2e:27017?retryWrites=true&writeConcern=majority
