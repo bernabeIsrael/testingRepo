@@ -63,7 +63,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: action/checkout@2
+        uses: actions/checkout@v2
       - name: install
         shell: bash
         run: npm ci
