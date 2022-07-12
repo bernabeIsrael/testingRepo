@@ -10,6 +10,7 @@ defaults:
     working-directory: ./api
 
 jobs:
+  
   lint:
     runs-on: ubuntu-latest
     steps:
@@ -27,6 +28,7 @@ jobs:
       - name: run unit test
         shell: bash
         run: npm run lint
+
   unit-test:
     runs-on: ubuntu-latest
     steps:
