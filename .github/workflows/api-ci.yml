@@ -54,7 +54,7 @@ jobs:
 
     services:
       mongo-e2e:
-        image: mongo4.4
+        image: mongo:4.4
         ports:
           - 27017:27017
         env:
